@@ -1,5 +1,4 @@
-﻿
-using GameFramework.Base;
+﻿using GameFramework.Base;
 
 namespace GameFramework.SkillSystem
 {
@@ -11,6 +10,15 @@ namespace GameFramework.SkillSystem
         /// <summary>
         /// 目标位置
         /// </summary>
-        Vector3 position { get; set; }
+        Vector3 Position { get; set; }
+        /// <summary>
+        /// 目标角度
+        /// </summary>
+        Vector3 EulerAngles { get; set; }
+        /// <summary>
+        /// 目标缩放
+        /// </summary>
+        Vector3 Scale { get; set; }
+        
     }
 }

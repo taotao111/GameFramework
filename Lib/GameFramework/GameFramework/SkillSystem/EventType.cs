@@ -2,17 +2,18 @@
 namespace GameFramework.SkillSystem
 {
     /// <summary>
-    /// 法球的行为
+    /// orb trigger event type
     /// </summary>
-    public interface IOrbAction
+    public enum E_OrbEventType
     {
+        None = 0,
         /// <summary>
-        /// 持有者
+        /// orb auto destroy
         /// </summary>
-        IOrb Holder { get; set; }
+        Orb_AutoDestroy,
         /// <summary>
-        /// 行为的触发
+        /// orb trigger
         /// </summary>
-        void Trigger();
+        Orb_Trigger,
     }
 }

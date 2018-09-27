@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 namespace GameFramework.SkillSystem
 {
     /// <summary>
-    /// 法球
-    /// 法球可作为目标，所以继承ITarget
+    /// orb
     /// </summary>
     public interface IOrb : ITarget
     {
         /// <summary>
         /// 法球触发
         /// </summary>
-        void Trigger();
+        void Trigger(E_OrbEventType p_EventType, params object[] p_Param);
     }
 }
