@@ -13,5 +13,10 @@ namespace GameFramework.SkillSystem
         {
             Holder.Position += dir * p_elapsedSec;
         }
+
+        public override OrbMotionData Serialize(OrbMotionData p_data)
+        {
+            return base.Serialize(p_data);
+        }
     }
 }
