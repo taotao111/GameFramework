@@ -1,11 +1,11 @@
 ﻿
-
 namespace GameFramework.SkillSystem
 {
     /// <summary>
-    /// skill target,also orb target
+    /// Orb target
     /// </summary>
-    public interface ISkillTarget : ITarget, IOrbTarget
+    public interface IOrbTarget : ITarget
     {
+
     }
 }

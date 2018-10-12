@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameFramework.Base;
 namespace GameFramework.SkillSystem
 {
-    public class Mo_MoveDir : OrbMotion
+    public class Mo_MoveDir : Mo_Move
     {
 #if EDITOR_ATTR
         [EditorAttr(viewName = "方向",index = 500)]

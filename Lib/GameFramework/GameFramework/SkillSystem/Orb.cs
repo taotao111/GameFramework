@@ -74,8 +74,7 @@ namespace GameFramework.SkillSystem
         #endregion
         #region Property
         #endregion
-        private ISkillCaster m_SkillCaster;
-        private IOrbCaster m_OrbCaster;
+
         private List<IOrbMotion> m_Motions = new List<IOrbMotion>();
         private List<IOrbAction> m_TriggerActions = new List<IOrbAction>();
         private List<IOrbAction> m_CreateActions = new List<IOrbAction>();
@@ -86,28 +85,24 @@ namespace GameFramework.SkillSystem
         /// </summary>
         public ISkillCaster SkillCaster
         {
-            get
-            {
-                return m_SkillCaster;
-            }
-            private set
-            {
-                m_SkillCaster = value;
-            }
+            get;
+            private set;
         }
         /// <summary>
         /// 法球释放者
         /// </summary>
         public IOrbCaster OrbCaster
         {
-            get
-            {
-                return m_OrbCaster;
-            }
-            private set
-            {
-                m_OrbCaster = value;
-            }
+            get;
+            private set;
+        }
+        /// <summary>
+        /// orb target,(1 orb->1 target)
+        /// </summary>
+        public IOrbTarget OrbTarget
+        {
+            get;
+            private set;
         }
         /// <summary>
         /// 法球的运动

@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;EDITOR_ATTR</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillSystem\Actions\Ac_Audio.cs" />
+    <Compile Include="SkillSystem\Data\OrbTriggerData.cs" />
+    <Compile Include="SkillSystem\EditorAttr.cs" />
+    <Compile Include="SkillSystem\EventType.cs" />
     <Compile Include="SkillSystem\IOrb.cs" />
     <Compile Include="SkillSystem\IOrbAction.cs" />
     <Compile Include="SkillSystem\IOrbCaster.cs" />
@@ -50,10 +54,17 @@
     <Compile Include="SkillSystem\ISkillCaster.cs" />
     <Compile Include="SkillSystem\ISkillTarget.cs" />
     <Compile Include="SkillSystem\ITarget.cs" />
+    <Compile Include="SkillSystem\Motions\Mo_MoveDir.cs" />
     <Compile Include="SkillSystem\Orb.cs" />
     <Compile Include="SkillSystem\OrbAction.cs" />
+    <Compile Include="SkillSystem\Data\OrbActionData.cs" />
+    <Compile Include="SkillSystem\Data\OrbData.cs" />
     <Compile Include="SkillSystem\OrbMotion.cs" />
+    <Compile Include="SkillSystem\Data\OrbMotionData.cs" />
+    <Compile Include="SkillSystem\OrbTrigger.cs" />
     <Compile Include="SkillSystem\SkillManagement.cs" />
+    <Compile Include="SkillSystem\Target.cs" />
+    <Compile Include="SkillSystem\Targets\OrbTarget.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameFrameworkBase\GameFrameworkBase.csproj">
@@ -61,5 +72,6 @@
       <Name>GameFrameworkBase</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

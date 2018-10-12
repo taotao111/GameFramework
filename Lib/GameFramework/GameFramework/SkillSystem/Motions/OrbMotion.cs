@@ -8,7 +8,7 @@ namespace GameFramework.SkillSystem
         public string name;
 
         /// <summary>
-        /// 持有者
+        /// which the orb own this motion
         /// </summary>
         public IOrb Holder
         {
@@ -17,7 +17,7 @@ namespace GameFramework.SkillSystem
         }
 
         /// <summary>
-        /// 刷新按照具体的运动方式自己刷新
+        /// update motion
         /// </summary>
         /// <param name="p_elapsedSec"></param>
         public virtual void Tick(float p_elapsedSec)
@@ -25,14 +25,21 @@ namespace GameFramework.SkillSystem
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// data->entity
+        /// </summary>
+        /// <param name="p_data"></param>
         public virtual void Deserialize(OrbMotionData p_data)
         {
             this.id = p_data.id;
             this.name = p_data.name;
         }
 
-         
+        /// <summary>
+        /// entity->data,
+        /// </summary>
+        /// <param name="p_data"></param>
+        /// <returns></returns>
         public virtual OrbMotionData Serialize(OrbMotionData p_data)
         {
             return null;

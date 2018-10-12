@@ -3,9 +3,9 @@
 namespace GameFramework.SkillSystem
 {
     /// <summary>
-    /// skill target,also orb target
+    /// 旋转
     /// </summary>
-    public interface ISkillTarget : ITarget, IOrbTarget
+    public class Mo_Rotate : OrbMotion
     {
     }
 }
