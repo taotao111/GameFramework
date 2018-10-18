@@ -125,6 +125,16 @@ namespace GameFramework.SkillSystem
         /// </summary>
         public bool IsExpire { get; private set; }
 
+        public static Orb Instantiate(ISkillCaster p_SkillCaster, IOrbCaster p_OrbCaster, IOrbTarget p_OrbTarget, OrbData p_OrbData)
+        {
+            Orb _orb = new Orb();
+            _orb.SkillCaster = p_SkillCaster;
+            _orb.OrbCaster = p_OrbCaster;
+            _orb.OrbTarget = p_OrbTarget;
+            return _orb;
+        }
+
+
         public void Tick(float p_ElapsedSec)
         {
             if (IsExpire)

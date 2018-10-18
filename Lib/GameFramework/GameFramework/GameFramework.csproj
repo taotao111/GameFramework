@@ -50,21 +50,26 @@
     <Compile Include="SkillSystem\IOrbAction.cs" />
     <Compile Include="SkillSystem\IOrbCaster.cs" />
     <Compile Include="SkillSystem\IOrbMotion.cs" />
+    <Compile Include="SkillSystem\IOrbTarget.cs" />
+    <Compile Include="SkillSystem\IOrbTargetSearch.cs" />
     <Compile Include="SkillSystem\IOrbTrigger.cs" />
     <Compile Include="SkillSystem\ISkillCaster.cs" />
     <Compile Include="SkillSystem\ISkillTarget.cs" />
     <Compile Include="SkillSystem\ITarget.cs" />
+    <Compile Include="SkillSystem\Motions\Mo_Move.cs" />
     <Compile Include="SkillSystem\Motions\Mo_MoveDir.cs" />
+    <Compile Include="SkillSystem\Motions\Mo_Rotate.cs" />
+    <Compile Include="SkillSystem\Motions\Mo_Scaler.cs" />
     <Compile Include="SkillSystem\Orb.cs" />
-    <Compile Include="SkillSystem\OrbAction.cs" />
+    <Compile Include="SkillSystem\Actions\OrbAction.cs" />
     <Compile Include="SkillSystem\Data\OrbActionData.cs" />
     <Compile Include="SkillSystem\Data\OrbData.cs" />
-    <Compile Include="SkillSystem\OrbMotion.cs" />
+    <Compile Include="SkillSystem\Motions\OrbMotion.cs" />
     <Compile Include="SkillSystem\Data\OrbMotionData.cs" />
-    <Compile Include="SkillSystem\OrbTrigger.cs" />
+    <Compile Include="SkillSystem\Triggers\OrbTrigger.cs" />
     <Compile Include="SkillSystem\SkillManagement.cs" />
     <Compile Include="SkillSystem\Target.cs" />
-    <Compile Include="SkillSystem\Targets\OrbTarget.cs" />
+    <Compile Include="SkillSystem\TargetSearch\OrbTargetSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameFrameworkBase\GameFrameworkBase.csproj">
