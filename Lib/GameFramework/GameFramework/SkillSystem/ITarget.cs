@@ -1,4 +1,4 @@
-﻿using GameFramework.Base;
+﻿using Vector3 = GameFramework.Base.Vector3;
 
 namespace GameFramework.SkillSystem
 {
