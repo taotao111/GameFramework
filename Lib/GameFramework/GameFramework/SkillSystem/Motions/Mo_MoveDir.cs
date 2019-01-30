@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-#if UNITY_DLL
+#if UNITY_PLATFORM
 using Vector3 = UnityEngine.Vector3;
 #else
 using Vector3 = GameFramework.Base.Vector3;
