@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_DLL
+using Vector3 = UnityEngine.Vector3;
+#else
 using Vector3 = GameFramework.Base.Vector3;
+#endif
 namespace GameFramework.SkillSystem
 {
     public class Mo_MoveDir : Mo_Move

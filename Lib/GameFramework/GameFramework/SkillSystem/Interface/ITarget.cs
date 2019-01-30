@@ -1,4 +1,8 @@
-﻿using Vector3 = GameFramework.Base.Vector3;
+﻿#if UNITY_DLL
+using Vector3 = UnityEngine.Vector3;
+#else
+using Vector3 = GameFramework.Base.Vector3;
+#endif
 
 namespace GameFramework.SkillSystem
 {

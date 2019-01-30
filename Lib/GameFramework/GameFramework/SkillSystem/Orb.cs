@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+#if UNITY_PLATFORM
+using Vector3 = UnityEngine.Vector3;
+#else
 using Vector3 = GameFramework.Base.Vector3;
+#endif
+
+
 namespace GameFramework.SkillSystem
 {
     /// <summary>
@@ -8,8 +14,8 @@ namespace GameFramework.SkillSystem
     /// </summary>
     public class Orb : IOrb, IOrbCaster
     {
-        #region Interface
-        #region interface ITarget
+#region Interface
+#region interface ITarget
         public Vector3 Position
         {
             get
@@ -46,8 +52,8 @@ namespace GameFramework.SkillSystem
                 throw new NotImplementedException();
             }
         }
-        #endregion
-        #region IOrb
+#endregion
+#region IOrb
         public void Trigger(E_OrbEventType p_EventType, params object[] p_Param)
         {
             switch (p_EventType)
@@ -70,10 +76,10 @@ namespace GameFramework.SkillSystem
                     }
             }
         }
-        #endregion
-        #endregion
-        #region Property
-        #endregion
+#endregion
+#endregion
+#region Property
+#endregion
 
         private List<IOrbMotion> m_Motions = new List<IOrbMotion>();
         private List<IOrbAction> m_TriggerActions = new List<IOrbAction>();
