@@ -1,0 +1,6 @@
+
+*.meta
+UnityDemo/Library
+UnityDemo/Temp
+UnityDemo/Obj
+UnityDemo/.vs
