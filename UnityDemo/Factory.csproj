@@ -10,10 +10,10 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{991ACB7A-CC85-4B1E-CE9A-C9C5FDEC3F6F}</ProjectGuid>
+    <ProjectGuid>{4BC57B5B-EAA4-213C-CF01-A177AB6E4162}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Factory</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -61,40 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Framwork\SkillSystem\Actions\Ac_Audio.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Actions\OrbAction.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Data\OrbActionData.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Data\OrbData.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Data\OrbMotionData.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Data\OrbTriggerData.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\EditorAttr.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\EventType.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrb.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrbAction.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrbCaster.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrbMotion.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrbTarget.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrbTargetSearch.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\IOrbTrigger.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\ISkillCaster.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\ISkillTarget.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Interface\ITarget.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Motions\Mo_Move.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Motions\Mo_MoveDir.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Motions\Mo_Rotate.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Motions\Mo_Scaler.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Motions\OrbMotion.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Orb.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Skill.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\SkillManagement.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Target.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\TargetSearch\OrbTargetSearch.cs" />
-    <Compile Include="Assets\Framwork\SkillSystem\Triggers\OrbTrigger.cs" />
-    <Compile Include="Assets\Test.cs" />
-    <None Include="Assets\JsonDotNet\link.xml" />
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/UnityProject/GameFramework/GameFramework/UnityDemo/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
+    <Compile Include="Assets\Framwork\Factory\Factory.cs" />
+    <Compile Include="Assets\Framwork\Factory\IFactory.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -278,23 +246,62 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>F:/UnityProject/GameFramework/GameFramework/UnityDemo/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
@@ -323,12 +330,6 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Factory.csproj">
-      <Project>{4BC57B5B-EAA4-213C-CF01-A177AB6E4162}</Project>
-      <Name>Factory</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

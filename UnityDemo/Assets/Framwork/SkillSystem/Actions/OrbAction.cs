@@ -2,37 +2,30 @@
 
 namespace GameFramework.SkillSystem
 {
-    public class OrbMotion : IOrbMotion
+    public class OrbAction : IOrbAction
     {
-        public uint id;
-        public string name;
-
         /// <summary>
-        /// which the orb own this motion
+        /// which orb owner this.
         /// </summary>
         public IOrb Holder
         {
             get;
             set;
         }
-
         /// <summary>
-        /// update motion
+        /// trigger action
         /// </summary>
-        /// <param name="p_elapsedSec"></param>
-        public virtual void Tick(float p_elapsedSec)
+        public void Trigger()
         {
             throw new NotImplementedException();
         }
-
         /// <summary>
         /// data->entity
         /// </summary>
         /// <param name="p_data"></param>
-        public virtual void Deserialize(OrbMotionData p_data)
+        public virtual void Deserialize(OrbActionData p_data)
         {
-            this.id = p_data.id;
-            this.name = p_data.name;
+
         }
 
         /// <summary>
@@ -40,7 +33,7 @@ namespace GameFramework.SkillSystem
         /// </summary>
         /// <param name="p_data"></param>
         /// <returns></returns>
-        public virtual OrbMotionData Serialize(OrbMotionData p_data)
+        public virtual OrbActionData Serialize(OrbActionData p_data)
         {
             return null;
         }

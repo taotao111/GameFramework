@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 namespace GameFramework.SkillSystem
 {
-    public abstract class OrbMotionData
+    public class Skill
     {
-        public uint id;
-        public string name;
 
-        
     }
 }
