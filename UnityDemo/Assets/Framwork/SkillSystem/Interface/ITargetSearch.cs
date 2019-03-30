@@ -3,15 +3,15 @@
 namespace GameFramework.SkillSystem
 {
     /// <summary>
-    /// get the orb target.
+    /// search orb target
     /// </summary>
-    public abstract class OrbTargetSearch : IOrbTargetSearch
+    public interface ITargetSearch
     {
         /// <summary>
         /// a orb only one orb target
         /// but you search mutil targets to create mutil orbs
         /// </summary>
         /// <returns></returns>
-        public abstract List<IOrbTarget> Search();
+        List<ITarget> Search();
     }
 }

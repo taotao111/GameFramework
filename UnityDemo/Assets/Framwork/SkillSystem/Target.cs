@@ -5,7 +5,7 @@ using Vector3 = GameFramework.Base.Vector3;
 #endif
 namespace GameFramework.SkillSystem
 {
-    public class Target : ITarget
+    public class Target : ISkillTarget
     {
         public Vector3 Position { get; set; }
         public Vector3 EulerAngles { get; set; }

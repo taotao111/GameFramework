@@ -22,5 +22,9 @@ namespace GameFramework.SkillSystem
         /// comment
         /// </summary>
         public string comment;
+        /// <summary>
+        /// type
+        /// </summary>
+        public int type;
     }
 }

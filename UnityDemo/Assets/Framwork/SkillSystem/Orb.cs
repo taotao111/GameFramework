@@ -5,7 +5,7 @@ using Vector3 = UnityEngine.Vector3;
 #else
 using Vector3 = GameFramework.Base.Vector3;
 #endif
-
+using GameFramework.FactorySystem;
 
 namespace GameFramework.SkillSystem
 {
@@ -71,7 +71,11 @@ namespace GameFramework.SkillSystem
                     }
                 case E_OrbEventType.Orb_Trigger:
                     {
-
+                        IsExpire = true;
+                        for (int i = 0; i < TriggerActions.Count; i++)
+                        {
+                            TriggerActions[i].Trigger();
+                        }
                         break;
                     }
             }
@@ -85,6 +89,7 @@ namespace GameFramework.SkillSystem
         private List<IOrbAction> m_TriggerActions = new List<IOrbAction>();
         private List<IOrbAction> m_CreateActions = new List<IOrbAction>();
         private List<IOrbAction> m_DestroyActions = new List<IOrbAction>();
+        private List<IOrbTrigger> m_Triggers = new List<IOrbTrigger>();
 
         /// <summary>
         /// 技能释放者
@@ -127,24 +132,76 @@ namespace GameFramework.SkillSystem
         /// </summary>
         public List<IOrbAction> DestroyActions { get { return m_DestroyActions; } }
         /// <summary>
+        /// triggers
+        /// </summary>
+        public List<IOrbTrigger> Triggers { get { return m_Triggers; } }
+        /// <summary>
         /// 当前发球是否已经失效
         /// </summary>
         public bool IsExpire { get; private set; }
-        #region
+        #region Entity_Factory
         private static Factory<OrbAction> acFactory = new Factory<OrbAction>();
         private static Factory<OrbTrigger> tgFactory = new Factory<OrbTrigger>();
         private static Factory<OrbMotion> moFactory = new Factory<OrbMotion>();
+        /// <summary>
+        /// rigister action factory
+        /// </summary>
+        /// <param name="p_Key"></param>
+        /// <param name="p_Type"></param>
         public static void RigisterAction(int p_Key,Type p_Type)
         {
             acFactory.Rigister(p_Key, p_Type);
         }
+        /// <summary>
+        /// create action
+        /// </summary>
+        /// <param name="p_Data"></param>
+        /// <returns></returns>
+        private static OrbAction CreateAction(OrbActionData p_Data)
+        {
+            OrbAction ac = acFactory.Create(p_Data.type);
+            ac.Deserialize(p_Data);
+            return ac;
+        }
+        /// <summary>
+        /// rigister motion factory
+        /// </summary>
+        /// <param name="p_Key"></param>
+        /// <param name="p_Type"></param>
         public static void RigisterMotion(int p_Key, Type p_Type)
         {
             moFactory.Rigister(p_Key, p_Type);
         }
+        /// <summary>
+        /// create motion
+        /// </summary>
+        /// <param name="p_Data"></param>
+        /// <returns></returns>
+        private static OrbMotion CreateMotion(OrbMotionData p_Data)
+        {
+            OrbMotion mo = moFactory.Create(p_Data.type);
+            mo.Deserialize(p_Data);
+            return mo;
+        }
+        /// <summary>
+        /// rigister trigger factory
+        /// </summary>
+        /// <param name="p_Key"></param>
+        /// <param name="p_Type"></param>
         public static void RigisterTrigger(int p_Key, Type p_Type)
         {
             tgFactory.Rigister(p_Key, p_Type);
+        }
+        /// <summary>
+        /// create trigger
+        /// </summary>
+        /// <param name="p_Data"></param>
+        /// <returns></returns>
+        private static OrbTrigger CreateTrigger(OrbTriggerData p_Data)
+        {
+            OrbTrigger tg = tgFactory.Create(p_Data.type);
+            tg.Deserialize(p_Data);
+            return tg;
         }
         #endregion
         /// <summary>
@@ -161,27 +218,52 @@ namespace GameFramework.SkillSystem
             _orb.SkillCaster = p_SkillCaster;
             _orb.OrbCaster = p_OrbCaster;
             _orb.OrbTarget = p_OrbTarget;
-
+            #region Init action motion trigger
             for (int i = 0; i < p_OrbData.createActions.Length; i++)
             {
-                OrbAction ac = acFactory.Create(p_OrbData.createActions[i].type);
-                ac.Deserialize(p_OrbData.createActions[i]);
+                OrbAction ac = CreateAction(p_OrbData.createActions[i]);
                 _orb.CreateActions.Add(ac);
             }
+            for (int i = 0; i < p_OrbData.triggerActions.Length; i++)
+            {
+                OrbAction ac = CreateAction(p_OrbData.triggerActions[i]);
+                _orb.TriggerActions.Add(ac);
+            }
+            for (int i = 0; i < p_OrbData.destroyActions.Length; i++)
+            {
+                OrbAction ac = CreateAction(p_OrbData.destroyActions[i]);
+                _orb.DestroyActions.Add(ac);
+            }
+            for (int i = 0; i < p_OrbData.createActions.Length; i++)
+            {
+                OrbMotion mo = CreateMotion(p_OrbData.motions[i]);
+                _orb.Motions.Add(mo);
+            }
+            #endregion
+
 
             return _orb;
         }
 
-
+        /// <summary>
+        /// orb update
+        /// </summary>
+        /// <param name="p_ElapsedSec"></param>
         public void Tick(float p_ElapsedSec)
         {
             if (IsExpire)
             {
                 return;
             }
+            //update motion
             for (int i = 0; i < Motions.Count; i++)
             {
                 Motions[i].Tick(p_ElapsedSec);
+            }
+            //update trigger
+            for (int i = 0; i < Triggers.Count; i++)
+            {
+                Triggers[i].Tick(p_ElapsedSec);
             }
         }
     }

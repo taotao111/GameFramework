@@ -20,6 +20,10 @@ namespace GameFramework.SkillSystem
             throw new NotImplementedException();
         }
         /// <summary>
+        /// init
+        /// </summary>
+        public virtual void Init() { }
+        /// <summary>
         /// data->entity
         /// </summary>
         /// <param name="p_data"></param>
