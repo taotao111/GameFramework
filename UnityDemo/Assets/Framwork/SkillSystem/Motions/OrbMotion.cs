@@ -5,6 +5,7 @@ namespace GameFramework.SkillSystem
     public class OrbMotion : IOrbMotion
     {
         public uint id;
+        public int type;
         public string name;
 
         /// <summary>
@@ -19,8 +20,8 @@ namespace GameFramework.SkillSystem
         /// <summary>
         /// update motion
         /// </summary>
-        /// <param name="p_elapsedSec"></param>
-        public virtual void Tick(float p_elapsedSec)
+        /// <param name="p_ElapsedSec"></param>
+        public virtual void Tick(float p_ElapsedSec)
         {
             
         }
@@ -28,11 +29,11 @@ namespace GameFramework.SkillSystem
         /// <summary>
         /// data->entity
         /// </summary>
-        /// <param name="p_data"></param>
-        public virtual void Deserialize(OrbMotionData p_data)
+        /// <param name="p_Data"></param>
+        public virtual void Deserialize(OrbMotionData p_Data)
         {
-            this.id = p_data.id;
-            this.name = p_data.name;
+            this.id = p_Data.id;
+            this.name = p_Data.name;
         }
 
         /// <summary>

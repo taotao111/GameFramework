@@ -8,6 +8,12 @@ public class SkillFactory {
     private static Factory<OrbTrigger> tgFactory = new Factory<OrbTrigger>();
     private static Factory<OrbMotion> moFactory = new Factory<OrbMotion>();
     private static Factory<TargetSearch> tsFactory = new Factory<TargetSearch>();
+
+    public static void RigisterSkill()
+    {
+        RigisterAction(1, typeof(Ac_Log));
+        RigisterMotion(1, typeof(Mo_MoveDir));
+    }
     /// <summary>
     /// rigister action factory
     /// </summary>

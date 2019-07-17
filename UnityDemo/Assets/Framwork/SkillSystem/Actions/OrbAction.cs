@@ -15,7 +15,7 @@ namespace GameFramework.SkillSystem
         /// <summary>
         /// trigger action
         /// </summary>
-        public void Trigger()
+        public virtual void Trigger()
         {
             throw new NotImplementedException();
         }
@@ -27,7 +27,7 @@ namespace GameFramework.SkillSystem
         /// data->entity
         /// </summary>
         /// <param name="p_data"></param>
-        public virtual void Deserialize(OrbActionData p_data)
+        public virtual void Deserialize(OrbActionData p_Data)
         {
 
         }
@@ -37,9 +37,9 @@ namespace GameFramework.SkillSystem
         /// </summary>
         /// <param name="p_data"></param>
         /// <returns></returns>
-        public virtual OrbActionData Serialize(OrbActionData p_data)
+        public virtual OrbActionData Serialize(OrbActionData p_Data)
         {
-            return null;
+            return p_Data;
         }
     }
 }

@@ -20,36 +20,36 @@ namespace GameFramework.SkillSystem
         {
             get
             {
-                throw new NotImplementedException();
+                return Transform.position;
             }
 
             set
             {
-                throw new NotImplementedException();
+                Transform.position = value;
             }
         }
         public Vector3 Scale
         {
             get
             {
-                throw new NotImplementedException();
+                return Transform.localScale;
             }
 
             set
             {
-                throw new NotImplementedException();
+                Transform.localScale = value;
             }
         }
         public Vector3 EulerAngles
         {
             get
             {
-                throw new NotImplementedException();
+                return Transform.eulerAngles;
             }
 
             set
             {
-                throw new NotImplementedException();
+                Transform.eulerAngles = value;
             }
         }
 #endregion
@@ -139,112 +139,15 @@ namespace GameFramework.SkillSystem
         /// 当前发球是否已经失效
         /// </summary>
         public bool IsExpire { get; private set; }
-        #region Entity_Factory
-        private static Factory<OrbAction> acFactory = new Factory<OrbAction>();
-        private static Factory<OrbTrigger> tgFactory = new Factory<OrbTrigger>();
-        private static Factory<OrbMotion> moFactory = new Factory<OrbMotion>();
-        /// <summary>
-        /// rigister action factory
-        /// </summary>
-        /// <param name="p_Key"></param>
-        /// <param name="p_Type"></param>
-        public static void RigisterAction(int p_Key,Type p_Type)
-        {
-            acFactory.Rigister(p_Key, p_Type);
-        }
-        /// <summary>
-        /// create action
-        /// </summary>
-        /// <param name="p_Data"></param>
-        /// <returns></returns>
-        private static OrbAction CreateAction(OrbActionData p_Data)
-        {
-            OrbAction ac = acFactory.Create(p_Data.type);
-            ac.Deserialize(p_Data);
-            return ac;
-        }
-        /// <summary>
-        /// rigister motion factory
-        /// </summary>
-        /// <param name="p_Key"></param>
-        /// <param name="p_Type"></param>
-        public static void RigisterMotion(int p_Key, Type p_Type)
-        {
-            moFactory.Rigister(p_Key, p_Type);
-        }
-        /// <summary>
-        /// create motion
-        /// </summary>
-        /// <param name="p_Data"></param>
-        /// <returns></returns>
-        private static OrbMotion CreateMotion(OrbMotionData p_Data)
-        {
-            OrbMotion mo = moFactory.Create(p_Data.type);
-            mo.Deserialize(p_Data);
-            return mo;
-        }
-        /// <summary>
-        /// rigister trigger factory
-        /// </summary>
-        /// <param name="p_Key"></param>
-        /// <param name="p_Type"></param>
-        public static void RigisterTrigger(int p_Key, Type p_Type)
-        {
-            tgFactory.Rigister(p_Key, p_Type);
-        }
-        /// <summary>
-        /// create trigger
-        /// </summary>
-        /// <param name="p_Data"></param>
-        /// <returns></returns>
-        private static OrbTrigger CreateTrigger(OrbTriggerData p_Data)
-        {
-            OrbTrigger tg = tgFactory.Create(p_Data.type);
-            tg.Deserialize(p_Data);
-            return tg;
-        }
-        #endregion
-        /// <summary>
-        /// Create orb instance
-        /// </summary>
-        /// <param name="p_SkillCaster"></param>
-        /// <param name="p_OrbCaster"></param>
-        /// <param name="p_OrbTarget"></param>
-        /// <param name="p_OrbData"></param>
-        /// <returns></returns>
-        public static Orb Instantiate(ISkillCaster p_SkillCaster, IOrbCaster p_OrbCaster, IOrbTarget p_OrbTarget, OrbData p_OrbData)
-        {
-            Orb _orb = new Orb();
-            _orb.SkillCaster = p_SkillCaster;
-            _orb.OrbCaster = p_OrbCaster;
-            _orb.OrbTarget = p_OrbTarget;
-            #region Init action motion trigger
-            for (int i = 0; i < p_OrbData.createActions.Length; i++)
-            {
-                OrbAction ac = CreateAction(p_OrbData.createActions[i]);
-                _orb.CreateActions.Add(ac);
-            }
-            for (int i = 0; i < p_OrbData.triggerActions.Length; i++)
-            {
-                OrbAction ac = CreateAction(p_OrbData.triggerActions[i]);
-                _orb.TriggerActions.Add(ac);
-            }
-            for (int i = 0; i < p_OrbData.destroyActions.Length; i++)
-            {
-                OrbAction ac = CreateAction(p_OrbData.destroyActions[i]);
-                _orb.DestroyActions.Add(ac);
-            }
-            for (int i = 0; i < p_OrbData.createActions.Length; i++)
-            {
-                OrbMotion mo = CreateMotion(p_OrbData.motions[i]);
-                _orb.Motions.Add(mo);
-            }
-            #endregion
 
+        public UnityEngine.GameObject GameObject { get;private set; }
+        public UnityEngine.Transform Transform { get; private set; }
 
-            return _orb;
+        public Orb(OrbData p_OrbData)
+        {
+            GameObject = Helper.NewGameObject(string.IsNullOrEmpty(p_OrbData.name) ? p_OrbData.id.ToString() : p_OrbData.name);
+            Transform = GameObject.transform;
         }
-
         /// <summary>
         /// orb update
         /// </summary>
@@ -265,6 +168,71 @@ namespace GameFramework.SkillSystem
             {
                 Triggers[i].Tick(p_ElapsedSec);
             }
+        }
+        public void TriggerCreate()
+        {
+            for (int i = 0; i < CreateActions.Count; i++)
+            {
+                CreateActions[i].Trigger();
+            }
+        }
+        /// <summary>
+        /// Create orb instance
+        /// </summary>
+        /// <param name="p_SkillCaster"></param>
+        /// <param name="p_OrbCaster"></param>
+        /// <param name="p_OrbTarget"></param>
+        /// <param name="p_OrbData"></param>
+        /// <returns></returns>
+        public static Orb Instantiate(ISkillCaster p_SkillCaster, IOrbCaster p_OrbCaster, IOrbTarget p_OrbTarget, OrbData p_OrbData)
+        {
+            Orb _orb = new Orb(p_OrbData);
+            //Init some data
+            _orb.SkillCaster = p_SkillCaster;
+            _orb.OrbCaster = p_OrbCaster;
+            _orb.OrbTarget = p_OrbTarget;
+
+            #region Init action motion trigger
+            if (p_OrbData.createActions != null)
+            {
+                for (int i = 0; i < p_OrbData.createActions.Length; i++)
+                {
+                    OrbAction ac = SkillFactory.CreateAction(p_OrbData.createActions[i]);
+                    ac.Holder = _orb;
+                    _orb.CreateActions.Add(ac);
+                }
+            }
+            if (p_OrbData.triggerActions != null)
+            {
+                for (int i = 0; i < p_OrbData.triggerActions.Length; i++)
+                {
+                    OrbAction ac = SkillFactory.CreateAction(p_OrbData.triggerActions[i]);
+                    ac.Holder = _orb;
+                    _orb.TriggerActions.Add(ac);
+                }
+            }
+            if (p_OrbData.destroyActions != null)
+            {
+                for (int i = 0; i < p_OrbData.destroyActions.Length; i++)
+                {
+                    OrbAction ac = SkillFactory.CreateAction(p_OrbData.destroyActions[i]);
+                    ac.Holder = _orb;
+                    _orb.DestroyActions.Add(ac);
+                }
+            }
+            if (p_OrbData.motions != null)
+            {
+                for (int i = 0; i < p_OrbData.motions.Length; i++)
+                {
+                    OrbMotion mo = SkillFactory.CreateMotion(p_OrbData.motions[i]);
+                    mo.Holder = _orb;
+                    _orb.Motions.Add(mo);
+                }
+            }
+            #endregion
+
+            _orb.TriggerCreate();
+            return _orb;
         }
     }
 }

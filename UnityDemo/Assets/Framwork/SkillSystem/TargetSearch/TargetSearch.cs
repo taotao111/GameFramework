@@ -16,17 +16,17 @@ namespace GameFramework.SkillSystem
         /// <summary>
         /// data->entity
         /// </summary>
-        /// <param name="p_data"></param>
-        public virtual void Deserialize(TargetData p_data)
+        /// <param name="p_Data"></param>
+        public virtual void Deserialize(TargetData p_Data)
         {
         }
 
         /// <summary>
         /// entity->data,
         /// </summary>
-        /// <param name="p_data"></param>
+        /// <param name="p_Data"></param>
         /// <returns></returns>
-        public virtual TargetData Serialize(TargetData p_data)
+        public virtual TargetData Serialize(TargetData p_Data)
         {
             return null;
         }

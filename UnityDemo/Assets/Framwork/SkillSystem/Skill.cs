@@ -4,6 +4,12 @@ namespace GameFramework.SkillSystem
 {
     public class Skill
     {
+        public List<Orb> orbs = new List<Orb>();
 
+        public static Skill Create(int id)
+        {
+            Skill skill = new Skill();
+            return skill;
+        }
     }
 }

@@ -13,14 +13,29 @@ namespace GameFramework.SkillSystem
         [EditorAttr(viewName = "方向",index = 500)]
 #endif
         public Vector3 dir = Vector3.zero;
-        public override void Tick(float p_elapsedSec)
+        public float speed = 0;
+        public override void Tick(float p_ElapsedSec)
         {
-            Holder.Position += dir * p_elapsedSec;
+            Holder.Position += dir * p_ElapsedSec;
         }
 
-        public override OrbMotionData Serialize(OrbMotionData p_data)
+        public override OrbMotionData Serialize(OrbMotionData p_Data)
         {
-            return base.Serialize(p_data);
+            Mo_MoveDirData mo_data = new Mo_MoveDirData();
+            base.Serialize(mo_data);
+            return mo_data;
         }
+        public override void Deserialize(OrbMotionData p_Data)
+        {
+            Mo_MoveDirData mo_data = (Mo_MoveDirData)p_Data;
+            base.Deserialize(p_Data);
+            speed = mo_data.speed;
+            dir = mo_data.dir;
+        }
+    }
+    public class Mo_MoveDirData : OrbMotionData
+    {
+        public float speed;
+        public Vector3 dir;
     }
 }
